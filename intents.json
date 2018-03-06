@@ -1,0 +1,72 @@
+{
+  "languageModel": {
+    "intents": [
+      {
+        "name": "AMAZON.CancelIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.HelpIntent",
+        "samples": []
+      },
+      {
+        "name": "AMAZON.StopIntent",
+        "samples": []
+      },
+      {
+        "name": "GetWeightIntent",
+        "samples": [
+          "how much does an {input} weigh",
+          "how many corgis for an {input}",
+          "how much does an {input}",
+          "{input} weight",
+          "how much an {input} weighs",
+          "how much a {input} weighs",
+          "the weight of a {input}",
+          "the weight of an {input}"
+        ],
+        "slots": [
+          {
+            "name": "input",
+            "type": "AMAZON.Animal",
+            "samples": [
+              "{input}"
+            ]
+          }
+        ]
+      }
+    ],
+    "invocationName": "corgi converter"
+  },
+  "prompts": [
+    {
+      "id": "Elicit.Intent-GetWeightIntent.IntentSlot-input",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Please specify an animal to weigh"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "intents": [
+      {
+        "name": "GetWeightIntent",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "input",
+            "type": "AMAZON.Animal",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicitation": "Elicit.Intent-GetWeightIntent.IntentSlot-input"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
